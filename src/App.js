@@ -14,10 +14,23 @@ class App extends Component {
     showCars: false
   }
 
-  changeTitleHandler = (newTitle) => { // changes title through <button/>
+  onChangeName(name, index) {
+    const car  = this.state.cars[index]
+    car.name = name
+    const cars = [...this.state.cars] // this.state.cars.concat() // old // clone array
+    cars[index] = car
     this.setState({
-      pageTitle: newTitle
+      cars
     })
+  }
+
+  // обычные функции создают свой контекст,
+  // стрелочные не создают контекст, а пользуются текущим line7
+
+  deleteHandler(index){
+    const cars = this.state.cars.concat()
+    cars.splice(index,1) // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+    this.setState({cars})
   }
 
   toggleCarsHandler = () => {
@@ -35,11 +48,13 @@ class App extends Component {
             key={index}
             name={car.name}
             year={car.year}
-            onChangeTitle={() => this.changeTitleHandler(car.name)}
+            onDelete={this.deleteHandler.bind(this, index)}
+            onChangeName={event => this.onChangeName(event.target.value, index)}
           />
         )
       })
     }
+
     return (
       <div className="App">
         <h1>{this.state.pageTitle}</h1>
@@ -47,7 +62,13 @@ class App extends Component {
         <button
           onClick={this.toggleCarsHandler}
           >Toggle Cars</button>
-        {cars}
+        <div style={{
+            width: 400,
+            margin: 'auto',
+            paddingTop: '20px'
+          }}>
+          {cars}
+        </div>
       </div>
     );
   }

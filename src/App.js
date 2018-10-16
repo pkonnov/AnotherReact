@@ -4,14 +4,18 @@ import Car from './Car/Car'
 
 class App extends Component {
 
-  state = {
-    cars: [
-      {name:'Volvo', year: 2018},
-      {name:'Mazda', year: 2014},
-      {name:'Auidi', year: 2010},
-    ],
-    pageTitle: 'React components',
-    showCars: false
+  constructor(props){
+    console.log('app constrct');
+    super(props)
+    this.state = {
+      cars: [
+        {name:'Volvo', year: 2018},
+        {name:'Mazda', year: 2014},
+        {name:'Auidi', year: 2010},
+      ],
+      pageTitle: 'React components',
+      showCars: false
+    }
   }
 
   onChangeName(name, index) {
@@ -39,7 +43,16 @@ class App extends Component {
     })
   }
 
+  componentWillMount(){
+    console.log('app componentWillMount')
+  }
+
+  componentDidMount(){
+    console.log('app componentDidMount')
+  }
+
   render() {
+    console.log('render');
     let cars = null
     if (this.state.showCars){
       cars = this.state.cars.map((car, index) => {
@@ -60,6 +73,7 @@ class App extends Component {
         <div className="textCentr">
 
           <h1>{this.state.pageTitle}</h1>
+          <h2>{this.props.title}</h2>
 
           <button
             className={'AppButton'}

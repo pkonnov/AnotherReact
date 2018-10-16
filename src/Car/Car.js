@@ -17,19 +17,19 @@ class Car extends React.Component{
       console.log('car componetnWillUpdate', nextProps, nextState)
   }
 
-  static getDerivedStateFromProps(nextProps, prevState){
-    console.log('car getDerivedStateFromProps', nextProps, prevState)
-
-    return prevState
-  }
+  // static getDerivedStateFromProps(nextProps, prevState){
+  //   console.log('car getDerivedStateFromProps', nextProps, prevState)
+  //
+  //   return prevState
+  // }
 
   componetnDidUpdate(){
       console.log('car componetnDidUpdate')
   }
 
-  getSnapshotBeforeUpdate(){
-    console.log('car getSnapshotBeforeUpdate');
-  }
+  // getSnapshotBeforeUpdate(){
+  //   console.log('car getSnapshotBeforeUpdate');
+  // }
 
   componetnWillUnmount(){
       console.log('car componetnWillUnmount')
@@ -37,6 +37,11 @@ class Car extends React.Component{
 
   render(){
       console.log('car render')
+
+      if(Math.random() > 0.7){
+        throw new Error('Car random failed')
+      } // emulation error
+
       const inputClasses = [classes.input]
       if (this.props.name !== ''){
         inputClasses.push(classes.red)

@@ -5,13 +5,13 @@ import Car from './Car/Car'
 class App extends Component {
 
   constructor(props){
-    console.log('app constrct');
+    
     super(props)
     this.state = {
       cars: [
         {name:'Volvo', year: 2018},
-        {name:'Mazda', year: 2014},
-        {name:'Auidi', year: 2010},
+        // {name:'Mazda', year: 2014},
+        // {name:'Auidi', year: 2010},
       ],
       pageTitle: 'React components',
       showCars: false

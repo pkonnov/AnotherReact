@@ -5,7 +5,7 @@ import Car from './Car/Car'
 class App extends Component {
 
   constructor(props){
-    
+
     super(props)
     this.state = {
       cars: [
@@ -43,7 +43,7 @@ class App extends Component {
     })
   }
 
-  componentWillMount(){
+  componentWillMount(){ 
     console.log('app componentWillMount')
   }
 
@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('render');
+    console.log('app render');
     let cars = null
     if (this.state.showCars){
       cars = this.state.cars.map((car, index) => {

@@ -1,46 +1,11 @@
 import React from 'react'
-// import Radium from 'radium'
 import classes from './Car.css'
+import withClass from '../hoc/withClass'
 
 class Car extends React.Component{
 
-  componetnWillReceiveProps(nextProps){
-      console.log('car componetnWillReceiveProps', nextProps)
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-      console.log('car shouldComponentUpdate', nextProps, nextState)
-      return nextProps.name.trim() !== this.props.name.trim()
-  }
-
-  componetnWillUpdate(nextProps, nextState){
-      console.log('car componetnWillUpdate', nextProps, nextState)
-  }
-
-  // static getDerivedStateFromProps(nextProps, prevState){
-  //   console.log('car getDerivedStateFromProps', nextProps, prevState)
-  //
-  //   return prevState
-  // }
-
-  componetnDidUpdate(){
-      console.log('car componetnDidUpdate')
-  }
-
-  // getSnapshotBeforeUpdate(){
-  //   console.log('car getSnapshotBeforeUpdate');
-  // }
-
-  componetnWillUnmount(){
-      console.log('car componetnWillUnmount')
-  }
 
   render(){
-      console.log('car render')
-
-      // if(Math.random() > 0.7){
-      //   throw new Error('Car random failed')
-      // } // emulation error
 
       const inputClasses = [classes.input]
       if (this.props.name !== ''){
@@ -53,18 +18,8 @@ class Car extends React.Component{
         inputClasses.push(classes.bold)
       }
 
-      const style = {
-        border: '1px solid #ccc',
-        boxShadow: '0 4px 5px 0 rgba(0,0,0,.14)',
-        ':hover': {
-          border: '1px solid #aaa',
-          boxShadow: '0 4px 15px 0 rgba(0,0,0,.25)',
-          cursor: 'pointer'
-        }
-      }
-
       return (
-        <div className={classes.Car} style={style}>
+        <React.Fragment>
           <h3>Car name: {this.props.name}</h3>
           <p>Year: <strong>{this.props.year}</strong></p>
           <input
@@ -74,11 +29,10 @@ class Car extends React.Component{
             className={inputClasses.join(' ')}
           />
           <button onClick={this.props.onDelete}>Delete</button>
-        </div>
+        </React.Fragment>
       )
-
   }
 }
 
 
-export default Car
+export default withClass(Car, classes.Car)

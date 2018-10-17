@@ -38,9 +38,9 @@ class Car extends React.Component{
   render(){
       console.log('car render')
 
-      if(Math.random() > 0.7){
-        throw new Error('Car random failed')
-      } // emulation error
+      // if(Math.random() > 0.7){
+      //   throw new Error('Car random failed')
+      // } // emulation error
 
       const inputClasses = [classes.input]
       if (this.props.name !== ''){
